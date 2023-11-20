@@ -5,19 +5,19 @@ Installatieprocedure
 Volg deze stappen om het programma correct te installeren:
 1.	Download Python:
    
-•	Bezoek Python.org en download de nieuwste versie van Python. Zorg ervoor dat je de versie kiest die overeenkomt met jouw besturingssysteem.
+Bezoek Python.org en download de nieuwste versie van Python. Zorg ervoor dat je de versie kiest die overeenkomt met jouw besturingssysteem.
 
 3.	Plaatsing van Programmabestanden:
 
-•	Na het downloaden, plaats de programmabestanden in een specifieke map op je computer. Kies een map waar je eenvoudig toegang toe hebt.
+Na het downloaden, plaats de programmabestanden in een specifieke map op je computer. Kies een map waar je eenvoudig toegang toe hebt.
 
 4.	Starten van het Programma:
    
-•	Om het programma te starten, gebruik het start.cmd bestand. Dit bestand initieert het programma en bereidt het voor op eerste gebruik.
+Om het programma te starten, gebruik het start.cmd bestand. Dit bestand initieert het programma en bereidt het voor op eerste gebruik.
 
 6.	Automatische Controle en Installatie:
    
-•	Bij de eerste start controleert het programma automatisch of alle benodigde componenten aanwezig zijn. Ontbrekende modules die noodzakelijk zijn voor de uitvoering van het programma worden automatisch geïnstalleerd.
+Bij de eerste start controleert het programma automatisch of alle benodigde componenten aanwezig zijn. Ontbrekende modules die noodzakelijk zijn voor de uitvoering van het programma worden automatisch geïnstalleerd.
 
 Gebruikersinstructies
 
@@ -25,20 +25,20 @@ Inladen en Beheren van Contacten
 
 1.	Inladen van een VCF-bestand:
 
-•	Bij de eerste start kun je een VCF-bestand inladen via de knop 'VCF-laden'. De contacten worden dan weergegeven in het programmavenster.
+Bij de eerste start kun je een VCF-bestand inladen via de knop 'VCF-laden'. De contacten worden dan weergegeven in het programmavenster.
 
 3.	Selecteren van Contacten voor Uitzondering:
    
-•	Selecteer contacten in het venster die je wilt uitzonderen van veiligstelling of archivering. Klik op 'Selecties Opslaan' om deze contacten vast te leggen in een logbestand. Deze selecties zijn zichtbaar bij de volgende start van het programma.
+Selecteer contacten in het venster die je wilt uitzonderen van veiligstelling of archivering. Klik op 'Selecties Opslaan' om deze contacten vast te leggen in een logbestand. Deze selecties zijn zichtbaar bij de volgende start van het programma.
 
 5.	Beheer van Nieuwe Contacten:
 
-•	Wanneer je een nieuw VCF-bestand inlaadt, controleert het programma op nieuwe contacten. Gebruik de filterfunctie om deze nieuwe contacten te identificeren en te beoordelen op uitzondering.
+Wanneer je een nieuw VCF-bestand inlaadt, controleert het programma op nieuwe contacten. Gebruik de filterfunctie om deze nieuwe contacten te identificeren en te beoordelen op uitzondering.
 
 7.	Deselecteren van Contacten:
 
-•	Om contacten te verwijderen uit de uitzonderingslijst, selecteer de betreffende contacten en klik op 'Selecties Deselecteren'.
+Om contacten te verwijderen uit de uitzonderingslijst, selecteer de betreffende contacten en klik op 'Selecties Deselecteren'.
 
 9.	Exporteren van Contacten:
 
-•	Gebruik de knop 'Exporteren naar CSV' om je selectie van contacten te exporteren naar een CSV-bestand voor verdere verwerking of archivering.
+Gebruik de knop 'Exporteren naar CSV' om je selectie van contacten te exporteren naar een CSV-bestand voor verdere verwerking of archivering.
