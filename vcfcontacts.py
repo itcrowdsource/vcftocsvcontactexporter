@@ -78,7 +78,7 @@ class ContactManager:
         self.help_button.pack(pady=10)
 
         # Info Text
-        info_text = "Omschrijving: Toepassing voor het inlezen en markeren van telefooncontacten die uitgezonderd moeten worden van veiligstelling of archivering van chatberichten.\nAuteur: R.H. Roos / Ministerie van Financiën\nContact: r.h.roos@minfin.nl / 06-33221121\nVersie: v1.1"
+        info_text = "Omschrijving: Toepassing voor het inlezen en markeren van telefooncontacten die uitgezonderd moeten worden van veiligstelling of archivering van chatberichten.\nAuteur: R.H. Roos / Ministerie van Financiën\nContact: r.h.roos@minfin.nl \nVersie: v1.1"
         self.info_label = tk.Label(self.root, text=info_text, justify=tk.LEFT, bg="white")
         self.info_label.pack(side=tk.BOTTOM, fill=tk.X)
 
