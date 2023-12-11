@@ -54,8 +54,12 @@ class ContactManager:
         self.deselect_button = tk.Button(self.root, text="Selecties Deselecteren", command=self.deselect_selections)
         self.deselect_button.pack(pady=10)
 
-        self.export_button = tk.Button(self.root, text="Exporteren naar CSV", command=self.export_csv)
-        self.export_button.pack(pady=10)
+        self.export_csv_button = tk.Button(self.root, text="Exporteren naar CSV", command=self.export_csv)
+        self.export_csv_button.pack(pady=10)
+
+        # Nieuwe knop voor het exporteren naar TXT
+        self.export_txt_button = tk.Button(self.root, text="Exporteren naar TXT", command=self.export_txt)
+        self.export_txt_button.pack(pady=10)
 
         self.filter_var = tk.StringVar()
         self.filter_dropdown = ttk.Combobox(self.root, textvariable=self.filter_var, values=["Alle", "Nieuw", "Bestaand", "Geselecteerd"], state="readonly")
@@ -74,7 +78,7 @@ class ContactManager:
         self.help_button.pack(pady=10)
 
         # Info Text
-        info_text = "Omschrijving: Toepassing voor het inlezen en markeren van telefooncontacten die uitgezonderd moeten worden van veiligstelling of archivering van chatberichten.\nAuteur: R.H. Roos / Ministerie van Financiën\nContact: r.h.roos@minfin.nl / 06-33221121\nVersie: v1.0"
+        info_text = "Omschrijving: Toepassing voor het inlezen en markeren van telefooncontacten die uitgezonderd moeten worden van veiligstelling of archivering van chatberichten.\nAuteur: R.H. Roos / Ministerie van Financiën\nContact: r.h.roos@minfin.nl / 06-33221121\nVersie: v1.1"
         self.info_label = tk.Label(self.root, text=info_text, justify=tk.LEFT, bg="white")
         self.info_label.pack(side=tk.BOTTOM, fill=tk.X)
 
@@ -227,7 +231,15 @@ class ContactManager:
             writer = csv.writer(file, delimiter=';')
             for phone, (firstname, lastname, status) in self.contacts.items():
                 writer.writerow([firstname, lastname, phone, status])
-
+                
+    def export_txt(self):
+        filepath = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")])
+        if not filepath:
+            return
+        with open(filepath, "w", encoding="utf-8") as file:
+            for phone, (firstname, lastname, status) in self.contacts.items():
+                if status == "Geselecteerd":
+                    file.write(f"{firstname} {lastname}\n")
 
 if __name__ == "__main__":
     app = ContactManager()
