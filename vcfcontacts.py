@@ -152,6 +152,7 @@ class ContactManager:
 
 
     def save_selections(self):
+        self.backup_saved_selections()  # Eerst een back-up maken
         selected_items = self.tree.selection()
         for item in self.tree.get_children():
             phone = self.tree.item(item, "values")[2]
@@ -170,6 +171,7 @@ class ContactManager:
 
 
     def deselect_selections(self):
+        self.backup_saved_selections()  # Eerst een back-up maken
         selected_items = self.tree.selection()
         for item in selected_items:
             phone = self.tree.item(item, "values")[2]
