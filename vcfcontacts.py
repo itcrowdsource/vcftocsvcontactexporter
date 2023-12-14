@@ -30,57 +30,76 @@ class ContactManager:
                 print(f"Error installing module {module}: {e}")
 
     def create_widgets(self):
-        self.tree_frame = tk.Frame(self.root)
-        self.tree_frame.pack(pady=20)
+        # Hoofdframe configuratie
+        self.main_frame = tk.Frame(self.root)
+        self.main_frame.grid(row=0, column=0, sticky="nsew")
+        self.root.grid_rowconfigure(0, weight=1)
+        self.root.grid_columnconfigure(0, weight=1)
 
+        # Treeview Frame
+        self.tree_frame = tk.Frame(self.main_frame)
+        self.tree_frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        self.main_frame.grid_rowconfigure(0, weight=1)
+        self.main_frame.grid_columnconfigure(0, weight=1)
+
+        # Treeview en Scrollbar
         self.tree_scroll = tk.Scrollbar(self.tree_frame)
-        self.tree_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        self.tree_scroll.grid(row=0, column=1, sticky="ns")
 
         self.tree = ttk.Treeview(self.tree_frame, columns=("Voornaam", "Achternaam", "Telefoonnummer", "Status"), selectmode="extended", yscrollcommand=self.tree_scroll.set)
-        self.tree.heading("Voornaam", text="Voornaam")
-        self.tree.heading("Achternaam", text="Achternaam")
-        self.tree.heading("Telefoonnummer", text="Telefoonnummer")
-        self.tree.heading("Status", text="Status")
-        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.tree.grid(row=0, column=0, sticky="nsew")
 
-        self.tree_scroll.config(command=self.tree.yview)
+        self.tree_frame.grid_rowconfigure(0, weight=1)
+        self.tree_frame.grid_columnconfigure(0, weight=1)
 
-        self.load_button = tk.Button(self.root, text="VCF Laden", command=self.load_vcf)
-        self.load_button.pack(pady=10)
+        # Knoppen en andere Widgets
+        button_frame = tk.Frame(self.main_frame)
+        button_frame.grid(row=1, column=0, sticky="ew", padx=10)
+        self.main_frame.grid_rowconfigure(1, weight=0)
+        self.main_frame.grid_columnconfigure(0, weight=1)
 
-        self.save_button = tk.Button(self.root, text="Selecties Opslaan", command=self.save_selections)
-        self.save_button.pack(pady=10)
+        # Knoppen en hun positionering in het button_frame
+        self.load_button = tk.Button(button_frame, text="VCF Laden", command=self.load_vcf)
+        self.load_button.grid(row=0, column=0, padx=5, pady=5)
 
-        self.deselect_button = tk.Button(self.root, text="Selecties Deselecteren", command=self.deselect_selections)
-        self.deselect_button.pack(pady=10)
+        self.save_button = tk.Button(button_frame, text="Selecties Opslaan", command=self.save_selections)
+        self.save_button.grid(row=0, column=1, padx=5, pady=5)
 
-        self.export_csv_button = tk.Button(self.root, text="Exporteren naar CSV", command=self.export_csv)
-        self.export_csv_button.pack(pady=10)
+        self.deselect_button = tk.Button(button_frame, text="Selecties Deselecteren", command=self.deselect_selections)
+        self.deselect_button.grid(row=0, column=2, padx=5, pady=5)
 
-        # Nieuwe knop voor het exporteren naar TXT
-        self.export_txt_button = tk.Button(self.root, text="Exporteren naar TXT", command=self.export_txt)
-        self.export_txt_button.pack(pady=10)
+        self.export_csv_button = tk.Button(button_frame, text="Exporteren naar CSV", command=self.export_csv)
+        self.export_csv_button.grid(row=0, column=3, padx=5, pady=5)
 
+        self.export_txt_button = tk.Button(button_frame, text="Exporteren naar TXT", command=self.export_txt)
+        self.export_txt_button.grid(row=0, column=4, padx=5, pady=5)
+
+        # Filter Dropdown en Zoekveld
         self.filter_var = tk.StringVar()
-        self.filter_dropdown = ttk.Combobox(self.root, textvariable=self.filter_var, values=["Alle", "Nieuw", "Bestaand", "Geselecteerd"], state="readonly")
+        self.filter_dropdown = ttk.Combobox(button_frame, textvariable=self.filter_var, values=["Alle", "Nieuw", "Bestaand", "Geselecteerd"], state="readonly")
+        self.filter_dropdown.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
         self.filter_dropdown.set("Alle")
         self.filter_dropdown.bind("<<ComboboxSelected>>", self.filter_contacts)
-        self.filter_dropdown.pack(pady=10)
 
-        search_label = tk.Label(self.root, text="Zoeken:")
-        search_label.pack(pady=10)
-        self.search_entry = tk.Entry(self.root)
-        self.search_entry.pack(pady=10)
+        search_label = tk.Label(button_frame, text="Zoeken:")
+        search_label.grid(row=1, column=2, padx=5, pady=5)
+
+        self.search_entry = tk.Entry(button_frame)
+        self.search_entry.grid(row=1, column=3, columnspan=2, padx=5, pady=5)
         self.search_entry.bind('<KeyRelease>', lambda event: self.search_and_filter(self.search_entry.get()))
 
-        # Handleiding Button
-        self.help_button = tk.Button(self.root, text="Handleiding", command=self.open_help_document)
-        self.help_button.pack(pady=10)
+        # Info Frame voor Informatietekst en Handleidingknop
+        info_frame = tk.Frame(self.main_frame)
+        info_frame.grid(row=2, column=0, sticky="ew", padx=10)
+        self.main_frame.grid_rowconfigure(2, weight=0)
 
-        # Info Text
-        info_text = "Omschrijving: Toepassing voor het inlezen en markeren van telefooncontacten die uitgezonderd moeten worden van veiligstelling of archivering van chatberichten.\nAuteur: R.H. Roos / Ministerie van Financiën\nContact: r.h.roos@minfin.nl \nVersie: v1.1"
-        self.info_label = tk.Label(self.root, text=info_text, justify=tk.LEFT, bg="white")
-        self.info_label.pack(side=tk.BOTTOM, fill=tk.X)
+        self.info_label = tk.Label(info_frame, text="Informatie over de applicatie...", justify=tk.LEFT, bg="white")
+        self.info_label.grid(row=0, column=0, sticky="w")
+
+        self.help_button = tk.Button(info_frame, text="Handleiding", command=self.open_help_document)
+        self.help_button.grid(row=0, column=1, padx=10)
+
+        # Zorg ervoor dat je alle widgets correct aanpast en positioneert met het grid-systeem
 
     def open_help_document(self):
         os.startfile("leesmij.docx")
