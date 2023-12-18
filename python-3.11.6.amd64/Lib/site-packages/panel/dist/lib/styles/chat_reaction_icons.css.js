@@ -1,0 +1,1 @@
+export default `.reaction-icons{display:flex;flex-direction:column;align-items:start;justify-content:end;width:fit-content;margin-inline:2px;}`

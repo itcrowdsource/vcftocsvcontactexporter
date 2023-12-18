@@ -1,0 +1,2 @@
+[llm]
+gpt4all = llm_gpt4all

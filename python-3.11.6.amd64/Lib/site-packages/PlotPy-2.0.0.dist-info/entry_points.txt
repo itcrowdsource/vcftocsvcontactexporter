@@ -1,0 +1,2 @@
+[gui_scripts]
+plotpy-tests = plotpy.tests:run

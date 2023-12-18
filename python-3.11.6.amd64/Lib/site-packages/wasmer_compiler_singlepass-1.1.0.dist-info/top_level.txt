@@ -1,0 +1,1 @@
+wasmer_compiler_singlepass

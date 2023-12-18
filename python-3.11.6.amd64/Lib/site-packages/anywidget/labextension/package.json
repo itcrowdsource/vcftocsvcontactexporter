@@ -1,0 +1,52 @@
+{
+  "name": "anywidget",
+  "type": "module",
+  "version": "0.7.1",
+  "author": "Trevor Manz",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./vite": {
+      "import": "./dist/vite.mjs",
+      "require": "./dist/vite.cjs"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.cjs"
+    }
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@anywidget/types": "workspace:~",
+    "@anywidget/vite": "workspace:~",
+    "@jupyter-widgets/base": "^2 || ^3 || ^4 || ^5 || ^6"
+  },
+  "devDependencies": {
+    "@jupyter-widgets/base-manager": "^1.0.6",
+    "@jupyterlab/builder": "^3.6.5"
+  },
+  "jupyterlab": {
+    "extension": "src/plugin",
+    "outputDir": "../../anywidget/labextension",
+    "sharedPackages": {
+      "@jupyter-widgets/base": {
+        "bundled": false,
+        "singleton": true
+      }
+    },
+    "_build": {
+      "load": "static/remoteEntry.a4c4de422eb0a219c75d.js",
+      "extension": "./extension"
+    }
+  },
+  "publishConfig": {
+    "main": "dist/index.js"
+  }
+}

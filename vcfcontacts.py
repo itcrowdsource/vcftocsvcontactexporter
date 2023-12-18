@@ -93,7 +93,7 @@ class ContactManager:
         info_frame.grid(row=2, column=0, sticky="ew", padx=10)
         self.main_frame.grid_rowconfigure(2, weight=0)
 
-        self.info_label = tk.Label(info_frame, text="Informatie over de applicatie...", justify=tk.LEFT, bg="white")
+        self.info_label = tk.Label(info_frame, text="Contactenbeheertool voor chatberichtenarchivering - auteur R.H. Roos FIN", justify=tk.LEFT, bg="white")
         self.info_label.grid(row=0, column=0, sticky="w")
 
         self.help_button = tk.Button(info_frame, text="Handleiding", command=self.open_help_document)

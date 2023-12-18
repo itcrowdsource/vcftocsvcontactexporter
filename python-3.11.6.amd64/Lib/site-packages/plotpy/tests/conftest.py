@@ -1,0 +1,6 @@
+# content of conftest.py
+
+from guidata.env import execenv
+
+# Turn on unattended mode for executing tests without user interaction
+execenv.unattended = True

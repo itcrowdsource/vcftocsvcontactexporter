@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: wasmer-compiler-cranelift
+Version: 1.1.0
+Summary: Python extension to run WebAssembly binaries
+Home-page: UNKNOWN
+Author: The Wasmer Engineering Team
+Author-email: engineering@wasmer.io
+License: MIT
+Platform: any
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# `wasmer-compiler-cranelift-any`
+
+A special `wasmer-$(version)-py3-none-any` wheel is built as a
+fallback. The `wasmer` libray will be installable, but it will raise
+an `ImportError` exception saying that “Wasmer is not available on
+this system”.
+
+This wheel will be installed if none matches before (learn more by
+reading the [PEP 425, Compatibility Tags for Built
+Distributions](https://www.python.org/dev/peps/pep-0425/)).
+
+
